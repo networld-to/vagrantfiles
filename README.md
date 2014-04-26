@@ -7,13 +7,13 @@ Different Vagrantfiles (http://www.vagrantup.com/) for local and remote virtual 
 If you use the Vagrantfiles of cloud providers you have to install first the
 plugins.
 
-  $ vagrant plugin install vagrant-digitalocean
-  $ vagrant plugin install vagrant-aws
+    $ vagrant plugin install vagrant-digitalocean
+    $ vagrant plugin install vagrant-aws
 
 If there is no script for the startup you have to execute the following commands.
 
-  $ vagrant up --provider=digital_ocean
-  $ vagrant up --provider=aws
+    $ vagrant up --provider=digital_ocean
+    $ vagrant up --provider=aws
 
 Before you can do that you have to copy the following content to
 *~/.vagrant.d/Vagrantfile* to have a global configuration and all your
