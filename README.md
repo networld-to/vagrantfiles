@@ -63,3 +63,16 @@ file.
           override.ssh.private_key_path = "#{ENV['HOME']}/.ssh/id_rsa"
         end
       end
+
+## Contribute
+
+Want to contribute? Great!
+
+1. Fork it.
+2. Create a branch (`git checkout -b my_vagrantfiles`)
+3. Commit your changes (`git commit -am "Added Vagrantfile X"`)
+4. Push to the branch (`git push origin my_vagrantfiles`)
+5. Open a [Pull Request][1]
+6. Lean back, relax and wait
+
+[1]: http://github.com/networld-to/vagrantfiles/pulls
