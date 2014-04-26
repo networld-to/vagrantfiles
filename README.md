@@ -2,11 +2,24 @@
 
 Different Vagrantfiles (http://www.vagrantup.com/) for local and remote virtual host bootstrapping.
 
-## Global Vagrantfile
+## Setup
 
-Copy the following content to *~/.vagrant.d/Vagrantfile* to have a global
-configuration and all your credentials secured on your localhost (means: do
-not push this file to a remote host).
+If you use the Vagrantfiles of cloud providers you have to install first the
+plugins.
+
+  $ vagrant plugin install vagrant-digitalocean
+  $ vagrant plugin install vagrant-aws
+
+If there is no script for the startup you have to execute the following commands.
+
+  $ vagrant up --provider=digital_ocean
+  $ vagrant up --provider=aws
+
+Before you can do that you have to copy the following content to
+*~/.vagrant.d/Vagrantfile* to have a global configuration and all your
+credentials secured on your localhost. Means: do not push this file to a
+remote host, at least not if your credentials are specified directyl in this
+file.
 
       # -*- mode: ruby -*-
       # vi: set ft=ruby :
