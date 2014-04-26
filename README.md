@@ -1,4 +1,52 @@
-vagrantfiles
-============
+# Vagrantfiles
 
 Different Vagrantfiles (http://www.vagrantup.com/) for local and remote virtual host bootstrapping.
+
+## Global Vagrantfile
+
+Copy the following content to *~/.vagrant.d/Vagrantfile* to have a global
+configuration and all your credentials secured on your localhost (means: do
+not push this file to a remote host).
+
+      # -*- mode: ruby -*-
+      # vi: set ft=ruby :
+
+      ######################################
+      # BEGIN: Credentials for Cloud Provder
+      ######################################
+      ENV['DIGITAL_OCEAN_CLIENT_ID'] = ""
+      ENV['DIGITAL_OCEAN_API_KEY'] = ""
+
+      ENV['AWS_ACCESS_KEY'] = ""
+      ENV['AWS_SECRET_KEY'] = ""
+      ######################################
+      # END: Credentials for Cloud Provder
+      ######################################
+
+      # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+      VAGRANTFILE_API_VERSION = "2"
+
+      Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+        config.vm.provider :aws do |aws, override|
+          aws.access_key_id        = ENV['AWS_ACCESS_KEY']
+          aws.secret_access_key    = ENV['AWS_SECRET_KEY']
+          aws.keypair_name         = ENV['USER']
+
+          aws.region               = 'eu-west-1'
+          aws.instance_type        = 't1.micro'
+          aws.security_groups      = ['default']
+
+          override.ssh.private_key_path = "#{ENV['HOME']}/.ssh/id_rsa"
+        end
+
+        config.vm.provider :digital_ocean do |ocean, override|
+          ocean.client_id          = ENV['DIGITAL_OCEAN_CLIENT_ID']
+          ocean.api_key            = ENV['DIGITAL_OCEAN_API_KEY']
+          ocean.ssh_key_name       = ENV['USER']
+
+          ocean.region             = 'Amsterdam 2'
+          ocean.size               = '512MB'
+
+          override.ssh.private_key_path = "#{ENV['HOME']}/.ssh/id_rsa"
+        end
+      end
