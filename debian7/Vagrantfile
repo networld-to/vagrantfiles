@@ -38,9 +38,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # argument is a set of non-required options.
   #config.vm.synced_folder "storage", "/storage"
 
-  config.vm.provision :shell, :path => "install-rvm.sh",  :args => "stable"
-  config.vm.provision :shell, :path => "install-ruby.sh", :args => "2.1.1"
-  config.vm.provision :shell, :path => "install-nginx.sh"
+  config.vm.provision :shell, :path => "1_install-rvm.sh",  :args => "stable"
+  config.vm.provision :shell, :path => "2_install-ruby.sh", :args => "2.1.1"
+  config.vm.provision :shell, :path => "3_install-nginx.sh"
+  config.vm.provision :shell, :path => "4_install-docker.sh"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
