@@ -40,6 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :shell, :path => "install-rvm.sh",  :args => "stable"
   config.vm.provision :shell, :path => "install-ruby.sh", :args => "2.1.1"
+  config.vm.provision :shell, :path => "install-nginx.sh"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
