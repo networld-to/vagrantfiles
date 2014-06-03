@@ -38,6 +38,7 @@ Vagrant.configure(2) do |config|
   # argument is a set of non-required options.
   #config.vm.synced_folder "storage", "/storage"
 
+  config.vm.provision :shell, :path => "0_fixes.sh"
   config.vm.provision :shell, :path => "1_install-rvm.sh",  :args => "stable"
   config.vm.provision :shell, :path => "2_install-ruby.sh", :args => "2.1.1"
   config.vm.provision :shell, :path => "3_install-nginx.sh"
